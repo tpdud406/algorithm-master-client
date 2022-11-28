@@ -14,7 +14,7 @@ function Header() {
       const { user } = await login();
       const idToken = await user.getIdToken();
 
-      await axios.post(
+      const response = await axios.post(
         `${process.env.REACT_APP_SERVER_HOST}/auth/login`,
         {
           name: user.displayName,
@@ -26,6 +26,8 @@ function Header() {
           },
         }
       );
+
+      navigate(`/users/${response.data.user._id}/problems`);
     } catch (err) {
       console.error(err);
     }
