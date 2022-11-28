@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
 function ProblemList() {
   const { user_id } = useParams();
-  console.log("user_id", user_id);
   const [problems, setProblems] = useState([]);
 
   useEffect(
@@ -29,7 +28,9 @@ function ProblemList() {
       {problems.map((problem, index) => (
         <Problem key={problem._id}>
           <span> {index + 1 + "."}</span>
-          <a>{problem.title}</a>
+          <Link to={`/users/${user_id}/problems/${problem._id}`}>
+            {problem.title}
+          </Link>
         </Problem>
       ))}
     </Wrapper>
@@ -58,10 +59,13 @@ const Wrapper = styled.ul`
 
   a {
     cursor: pointer;
+    text-decoration: none;
+    color: #333d4b;
   }
 
   a:hover {
     scale: 1.1;
+    color: #1b64da;
   }
 
   span {
