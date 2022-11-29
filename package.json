@@ -5,6 +5,8 @@
   "repository": "https://github.com/tpdud406/algorithm-master-client",
   "author": "SeYoung Lee <tpdud406@gmail.com>",
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.1",
+    "@uiw/react-codemirror": "^4.15.1",
     "axios": "^1.2.0",
     "firebase": "^9.14.0",
     "react": "^18.2.0",

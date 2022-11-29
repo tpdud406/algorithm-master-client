@@ -10,6 +10,7 @@ import Results from "../../components/Results";
 
 function SolvingProblem() {
   const { user_id, problem_id } = useParams();
+  const [solutionCode, setSolutionCode] = useState("");
   const [problem, setProblem] = useState({});
   const { title, description, tests } = problem;
 
@@ -34,11 +35,11 @@ function SolvingProblem() {
       <Wrapper>
         <ContentTop>
           <Problem title={title} description={description} />
-          <Editor />
+          <Editor handlesSolution={setSolutionCode} />
         </ContentTop>
         <ContentBottom>
           {tests && <Tests tests={tests} />}
-          <Results />
+          <Results solutionCode={solutionCode} />
         </ContentBottom>
       </Wrapper>
     </>
