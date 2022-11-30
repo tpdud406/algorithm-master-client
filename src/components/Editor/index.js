@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 
-function Editor({ handlesSolution }) {
+function Editor({ handleSolution }) {
   const [code, setCode] = useState(
     `function solution(a, b) {\n  return a + b;\n}`
   );
@@ -17,7 +17,7 @@ function Editor({ handlesSolution }) {
         extensions={[javascript()]}
         onChange={(value, viewUpdate) => {
           setCode(value);
-          handlesSolution(value);
+          handleSolution(value);
         }}
       />
     </Wrapper>

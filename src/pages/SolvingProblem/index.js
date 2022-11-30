@@ -35,10 +35,10 @@ function SolvingProblem() {
       <Wrapper>
         <ContentTop>
           <Problem title={title} description={description} />
-          <Editor handlesSolution={setSolutionCode} />
+          <Editor handleSolution={setSolutionCode} />
         </ContentTop>
         <ContentBottom>
-          {tests && <Tests tests={tests} />}
+          {<Tests tests={tests} />}
           <Results solutionCode={solutionCode} />
         </ContentBottom>
       </Wrapper>
