@@ -41,23 +41,20 @@ function SubmitedResult() {
   );
 
   return (
-    <>
-      <Header />
-      <Main>
+    <Main>
+      {submitedProblems && (
+        <ResultTitle submitedProblems={submitedProblems} passed={passed} />
+      )}
+      <Table>
+        <THead />
         {submitedProblems && (
-          <ResultTitle submitedProblems={submitedProblems} passed={passed} />
+          <TBody
+            submitedProblems={submitedProblems}
+            sumSubmitedRuntime={sumSubmitedRuntime}
+          />
         )}
-        <Table>
-          <THead />
-          {submitedProblems && (
-            <TBody
-              submitedProblems={submitedProblems}
-              sumSubmitedRuntime={sumSubmitedRuntime}
-            />
-          )}
-        </Table>
-      </Main>
-    </>
+      </Table>
+    </Main>
   );
 }
 

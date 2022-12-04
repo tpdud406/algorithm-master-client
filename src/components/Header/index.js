@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
-import { login, logout, onUserStateChange } from "../../services/firebase";
 import User from "../User";
+import Navbar from "./Navbar";
+import { useAuthContext } from "../context/AuthContext";
 
 function Header() {
   const navigate = useNavigate();
-  const [user, setUser] = useState();
+  const { user, login, logout } = useAuthContext();
+  const [userId, setUserId] = useState();
 
   const handleLogin = async () => {
     try {
@@ -27,6 +29,7 @@ function Header() {
         }
       );
 
+      setUserId(response.data.user._id);
       navigate(`/users/${response.data.user._id}/problems`);
     } catch (err) {
       console.error(err);
@@ -42,13 +45,12 @@ function Header() {
     }
   };
 
-  useEffect(() => {
-    onUserStateChange(setUser);
-  }, []);
-
   return (
     <Wrapper>
-      <h1>Algorithm Master</h1>
+      <NavbarLink to="/">
+        <h1>Algorithm Master</h1>
+      </NavbarLink>
+      <Navbar user_id={userId} />
       {user && <User user={user} />}
       {!user && (
         <Button type="button" onClick={handleLogin}>
@@ -70,10 +72,21 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 10rem;
+  padding-left: 5rem;
   width: 100%;
   min-height: 4.5rem;
   border-bottom: 1px solid #f2f2f2;
+  line-height: 1.5;
+`;
+
+const NavbarLink = styled(Link)`
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #333d4b;
+  margin: 1rem;
+  padding: 0.25rem 1rem;
+  align-items: center;
+  flex-basis: 60%;
 `;
 
 const Button = styled.button`
@@ -88,6 +101,5 @@ const Button = styled.button`
 
   &:hover {
     scale: 1.1;
-    border-bottom: 1px solid #333d4b;
   }
 `;

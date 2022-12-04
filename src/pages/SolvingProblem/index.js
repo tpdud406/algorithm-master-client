@@ -30,8 +30,6 @@ function SolvingProblem() {
   );
 
   return (
-    <>
-      <Header />
       <Wrapper>
         <ContentTop>
           <Problem title={title} description={description} />
@@ -42,7 +40,6 @@ function SolvingProblem() {
           <Results solutionCode={solutionCode} />
         </ContentBottom>
       </Wrapper>
-    </>
   );
 }
 
