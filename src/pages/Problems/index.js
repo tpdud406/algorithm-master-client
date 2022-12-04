@@ -5,7 +5,6 @@ import ProblemList from "../../components/ProblemList";
 function Problems() {
   return (
     <>
-      <Header />
       <ContentHeader>
         <h1>알고리즘 문제리스트</h1>
         <p>다양한 알고리즘을 풀어보고, 효율을 비교해보세요!</p>
