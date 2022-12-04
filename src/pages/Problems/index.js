@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Header from "../../components/Header";
 import ProblemList from "../../components/ProblemList";
 
 function Problems() {

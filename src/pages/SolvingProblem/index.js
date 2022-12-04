@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
-import Header from "../../components/Header";
 import Problem from "../../components/Problem";
 import Editor from "../../components/Editor";
 import Tests from "../../components/Tests";
