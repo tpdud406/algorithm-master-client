@@ -9,6 +9,7 @@ import Problems from "./pages/Problems";
 import SolvingProblem from "./pages/SolvingProblem";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import CreateProblem from "./components/CreateProblem";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             <Problems />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/users/:user_id/problems/new",
+        element: <CreateProblem />,
       },
       {
         path: "/users/:user_id/problems/:problem_id",

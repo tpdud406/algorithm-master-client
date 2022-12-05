@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+import { GrAddCircle } from "react-icons/gr";
 
 function ProblemList() {
   const { user_id } = useParams();
@@ -33,6 +34,16 @@ function ProblemList() {
           </Link>
         </Problem>
       ))}
+      <GrAddCircle />
+
+      <Problem>
+        <ProblemCreate to={`/users/${user_id}/problems/new`}>
+          {/* // <Link to={`/users/${user_id}/problems/new`}> */}
+          <GrAddCircle className="icon" />
+          문제 만들기
+          {/* // </Link> */}
+        </ProblemCreate>
+      </Problem>
     </Wrapper>
   );
 }
@@ -79,4 +90,18 @@ const Problem = styled.li`
   padding-left: 2rem;
   font-size: 25px;
   line-height: 200%;
+`;
+
+const ProblemCreate = styled(Link)`
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  background: #f9f9f9;
+  border-radius: 20px;
+  border: 1px solid #333d4b;
+  padding: 0 2rem;
+
+  .icon {
+    margin-right: 0.5rem;
+  }
 `;
