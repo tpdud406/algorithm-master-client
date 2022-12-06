@@ -13,4 +13,3 @@ function THead() {
 }
 
 export default THead;
-

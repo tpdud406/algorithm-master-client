@@ -26,22 +26,21 @@ function ProblemList() {
   return (
     <Wrapper>
       <h2>문제 제목</h2>
-      {problems.map((problem, index) => (
-        <Problem key={problem._id}>
-          <span> {index + 1 + "."}</span>
-          <Link to={`/users/${user_id}/problems/${problem._id}`}>
-            {problem.title}
-          </Link>
-        </Problem>
-      ))}
+      {problems &&
+        problems.map((problem, index) => (
+          <Problem key={problem._id}>
+            <span> {index + 1 + "."}</span>
+            <Link to={`/users/${user_id}/problems/${problem._id}`}>
+              {problem.title}
+            </Link>
+          </Problem>
+        ))}
       <GrAddCircle />
 
       <Problem>
         <ProblemCreate to={`/users/${user_id}/problems/new`}>
-          {/* // <Link to={`/users/${user_id}/problems/new`}> */}
           <GrAddCircle className="icon" />
           문제 만들기
-          {/* // </Link> */}
         </ProblemCreate>
       </Problem>
     </Wrapper>
