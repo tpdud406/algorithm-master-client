@@ -25,14 +25,7 @@ function Header() {
         {
           headers: {
             Authorization: `Bearer ${idToken}`,
-            headers: [
-              {
-                key: "Access-Control-Allow-Origin",
-                value: "*",
-              },
-            ],
           },
-          withCredentials: true,
         }
       );
 
