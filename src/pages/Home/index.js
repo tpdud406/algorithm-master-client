@@ -1,9 +1,7 @@
 import Content from "../../components/Content";
 
 function Home() {
-  return (
-      <Content />
-  );
+  return <Content />;
 }
 
 export default Home;
