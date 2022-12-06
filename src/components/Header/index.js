@@ -26,6 +26,7 @@ function Header() {
           headers: {
             Authorization: `Bearer ${idToken}`,
           },
+          withCredentials: true,
         }
       );
 
