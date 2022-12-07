@@ -13,23 +13,22 @@ function SolvingProblem() {
   const [problem, setProblem] = useState({});
   const { title, description, tests } = problem;
 
-  useEffect(
-    () => async () => {
+  useEffect(() => {
+    const getSolvingProblems = async () => {
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems/${problem_id}`
         );
 
-        console.log("SolvingProblem response", response);
-        setProblem(response.data);
+        setProblem(() => [...response.data]);
       } catch (err) {
         console.log(err);
       }
-    },
-    []
-  );
+    };
 
-  console.log("SolvingProblem problems", problem);
+    getSolvingProblems();
+  }, []);
+
   return (
     <Wrapper>
       <ContentTop>
