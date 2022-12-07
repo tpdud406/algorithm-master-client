@@ -8,8 +8,23 @@ function ProblemList() {
   const { user_id } = useParams();
   const [problems, setProblems] = useState([]);
 
-  useEffect(
-    () => async () => {
+  // useEffect(
+  //   () => async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems`
+  //       );
+  //       console.log("ProblemList response", response);
+  //       setProblems(() => [...response.data]);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   },
+  //   []
+  // );
+
+  useEffect(() => {
+    const getProblems = async () => {
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems`
@@ -19,9 +34,10 @@ function ProblemList() {
       } catch (err) {
         console.log(err);
       }
-    },
-    []
-  );
+    }
+
+    getProblems();
+  }, [])
 
   console.log("ProblemList problems", problems);
   return (
