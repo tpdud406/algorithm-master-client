@@ -14,7 +14,7 @@ function ProblemList() {
         const response = await axios.get(
           `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems`
         );
-        console.log("response", response);
+        console.log("ProblemList response", response);
         setProblems(response.data);
       } catch (err) {
         console.log(err);
@@ -23,7 +23,7 @@ function ProblemList() {
     []
   );
 
-  console.log("problems", problems);
+  console.log("ProblemList problems", problems);
   return (
     <Wrapper>
       <h2>문제 제목</h2>
