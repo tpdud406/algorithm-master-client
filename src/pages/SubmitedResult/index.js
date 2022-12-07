@@ -24,20 +24,21 @@ function SubmitedResult() {
       );
     });
 
-  useEffect(
-    () => async () => {
+  useEffect(() => {
+    const getSubmitResult = async () => {
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}`
         );
 
-        setResult(response.data);
+        setResult(() => [...response.data]);
       } catch (err) {
         console.log(err);
       }
-    },
-    []
-  );
+    };
+
+    getSubmitResult();
+  }, []);
 
   return (
     <Main>
