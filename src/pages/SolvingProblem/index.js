@@ -29,7 +29,7 @@ function SolvingProblem() {
     []
   );
 
-  console.log("SolvingProblem problems", problems);
+  console.log("SolvingProblem problems", problem);
   return (
     <Wrapper>
       <ContentTop>
