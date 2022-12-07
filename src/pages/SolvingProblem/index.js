@@ -20,6 +20,7 @@ function SolvingProblem() {
           `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems/${problem_id}`
         );
 
+        console.log("SolvingProblem response", response);
         setProblem(response.data);
       } catch (err) {
         console.log(err);
@@ -28,17 +29,18 @@ function SolvingProblem() {
     []
   );
 
+  console.log("SolvingProblem problems", problems);
   return (
-      <Wrapper>
-        <ContentTop>
-          <Problem title={title} description={description} />
-          <Editor handleSolution={setSolutionCode} />
-        </ContentTop>
-        <ContentBottom>
-          {<Tests tests={tests} />}
-          <Results solutionCode={solutionCode} />
-        </ContentBottom>
-      </Wrapper>
+    <Wrapper>
+      <ContentTop>
+        <Problem title={title} description={description} />
+        <Editor handleSolution={setSolutionCode} />
+      </ContentTop>
+      <ContentBottom>
+        {<Tests tests={tests} />}
+        <Results solutionCode={solutionCode} />
+      </ContentBottom>
+    </Wrapper>
   );
 }
 
