@@ -31,7 +31,7 @@ function SubmitedResult() {
           `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}`
         );
 
-        setResult(() => [...response.data]);
+        setResult(response.data);
       } catch (err) {
         console.log(err);
       }
