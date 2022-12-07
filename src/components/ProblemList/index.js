@@ -34,10 +34,10 @@ function ProblemList() {
       } catch (err) {
         console.log(err);
       }
-    }
+    };
 
     getProblems();
-  }, [])
+  }, []);
 
   console.log("ProblemList problems", problems);
   return (
