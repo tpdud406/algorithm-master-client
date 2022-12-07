@@ -20,7 +20,7 @@ function ProblemList() {
         console.log(err);
       }
     },
-    []
+    [problems]
   );
 
   console.log("ProblemList problems", problems);
