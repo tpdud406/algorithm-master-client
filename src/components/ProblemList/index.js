@@ -15,7 +15,7 @@ function ProblemList() {
           `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems`
         );
         console.log("ProblemList response", response);
-        setProblems(response.data);
+        setProblems(() => [...response.data]);
       } catch (err) {
         console.log(err);
       }
