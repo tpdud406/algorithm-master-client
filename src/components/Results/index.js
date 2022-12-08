@@ -4,13 +4,15 @@ import axios from "axios";
 import styled from "styled-components";
 
 function Results({ solutionCode }) {
-  const { user_id, problem_id } = useParams();
+  const { problem_id } = useParams();
   const [results, setResults] = useState([]);
 
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems/${problem_id}`,
+        `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
+          "user_id"
+        )}/problems/${problem_id}`,
         {
           solutionCode,
         }

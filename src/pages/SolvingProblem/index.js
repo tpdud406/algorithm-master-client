@@ -8,7 +8,7 @@ import Tests from "../../components/Tests";
 import Results from "../../components/Results";
 
 function SolvingProblem() {
-  const { user_id, problem_id } = useParams();
+  const { problem_id } = useParams();
   const [solutionCode, setSolutionCode] = useState("");
   const [problem, setProblem] = useState({});
   const { title, description, tests } = problem;
@@ -17,7 +17,9 @@ function SolvingProblem() {
     const getSolvingProblems = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems/${problem_id}`
+          `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
+            "user_id"
+          )}/problems/${problem_id}`
         );
 
         setProblem(response.data);

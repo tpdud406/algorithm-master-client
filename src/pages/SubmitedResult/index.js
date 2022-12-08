@@ -7,7 +7,6 @@ import TBody from "../../components/Tbody";
 import THead from "../../components/THead";
 
 function SubmitedResult() {
-  const { user_id } = useParams();
   const [result, setResult] = useState();
   const { submitedProblems } = result || [];
   const sumSubmitedRuntime = [];
@@ -28,7 +27,9 @@ function SubmitedResult() {
     const getSubmitResult = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}`
+          `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
+            "user_id"
+          )}`
         );
 
         setResult(response.data);
