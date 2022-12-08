@@ -25,11 +25,21 @@ export default Tests;
 const Wrapper = styled.div`
   width: 50%;
   height: 50vh;
-  padding: 1rem;
-  background-color: skyblue;
   font-size: 20px;
+  border: 1px solid gray;
 
-  span {
-    padding-left: 1.5rem;
+  h3 {
+    padding: 0.3rem 1rem;
+    border: 1px solid gray;
+    margin-top: -1px;
+    margin-right: -1px;
+  }
+
+  p {
+    padding-left: 1rem;
+
+    span {
+      padding-left: 1.5rem;
+    }
   }
 `;

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 
 const Modal = ({ children }) => {
@@ -28,7 +27,7 @@ const Content = styled.div`
   width: 1000px;
   height: 800px;
   padding: 1rem;
-  background-color: rgb(26, 28, 33);
+  background-color: #1a1c21;
   border-radius: 2rem;
   color: white;
   font-size: 1.5rem;

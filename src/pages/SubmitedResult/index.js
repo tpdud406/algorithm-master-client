@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ResultTitle from "../../components/ResultTitle";
 import TBody from "../../components/Tbody";
@@ -72,7 +71,7 @@ const Main = styled.div`
 `;
 
 const Table = styled.table`
-  background-color: rgb(26, 28, 33);
+  background-color: #1a1c21;
   width: 1500px;
   margin: 0 auto;
   border: 1px solid black;
