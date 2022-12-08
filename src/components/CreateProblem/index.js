@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import Modal from "../Modal";
@@ -156,7 +156,9 @@ const TestCode = styled.div`
 `;
 
 const Button = styled.button`
-  display: flex;
+  position: fixed;
+  bottom: 5%;
+  left: 45%;
   border-radius: 1rem;
   border-style: none;
   padding: 0.7rem;

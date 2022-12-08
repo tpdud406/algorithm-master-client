@@ -17,10 +17,13 @@ export default Problem;
 const Wrapper = styled.div`
   width: 50%;
   height: 50vh;
-  padding: 1rem;
-  background-color: pink;
+  border-bottom: none;
 
+  h2 {
+    padding: 0.3rem 1rem;
+    border: 1px solid gray;
+  }
   p {
-    padding-top: 1rem;
+    padding: 1rem;
   }
 `;
