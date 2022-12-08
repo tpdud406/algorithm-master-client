@@ -30,6 +30,7 @@ function Header() {
       );
 
       setUserId(response.data.user._id);
+      localStorage.setItem("user_id", response.data.user._id);
       navigate(`/users/${response.data.user._id}/problems`);
     } catch (err) {
       console.error(err);
@@ -39,6 +40,7 @@ function Header() {
   const handleLogout = async () => {
     try {
       await logout();
+      localStorage.removeItem("user_id");
       navigate("/");
     } catch (err) {
       console.error(err);

@@ -6,7 +6,6 @@ import Modal from "../Modal";
 import ModalPortal from "../Modal/ModalPortal";
 
 function CreateProblem() {
-  const { user_id } = useParams();
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     title: "",
@@ -41,7 +40,9 @@ function CreateProblem() {
   const handleCreateSubmit = async () => {
     try {
       await axios.post(
-        `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems`,
+        `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
+          "user_id"
+        )}/problems`,
         {
           inputs,
         }

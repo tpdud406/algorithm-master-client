@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { GrAddCircle } from "react-icons/gr";
 
 function ProblemList() {
-  const { user_id } = useParams();
+  const user_id = localStorage.getItem("user_id");
   const [problems, setProblems] = useState([]);
 
   useEffect(() => {
