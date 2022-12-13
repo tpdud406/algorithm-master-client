@@ -4,7 +4,7 @@ function User({ user: { photoURL, displayName } }) {
   return (
     <Wrapper>
       <img src={photoURL} alt={displayName} />
-      <span>{displayName}</span>
+      <span>{displayName} 님</span>
     </Wrapper>
   );
 }
@@ -16,9 +16,14 @@ const Wrapper = styled.div`
   align-items: center;
 
   img {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 100%;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+  }
+
+  span {
+    font-weight: bold;
+    color: #333d4b;
   }
 `;

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import User from "../User";
 import Navbar from "./Navbar";
 import { useAuthContext } from "../context/AuthContext";
 import { postAuth } from "../../services/axios";
+import { SiFuturelearn } from "react-icons/si";
 
 function Header() {
   const navigate = useNavigate();
@@ -37,9 +38,10 @@ function Header() {
 
   return (
     <Wrapper>
-      <NavbarLink to="/">
-        <h1>Algorithm Master</h1>
-      </NavbarLink>
+      <h1>
+        <SiFuturelearn className="icon" />
+        Algorithm Master
+      </h1>
       <Navbar user_id={userId} />
       {user && <User user={user} />}
       {!user && (
@@ -60,34 +62,33 @@ export default Header;
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-left: 5rem;
   width: 100%;
-  min-height: 4.5rem;
-  border-bottom: 1px solid #f2f2f2;
+  min-height: 4rem;
+  border-bottom: 2px solid #eaeef2;
   line-height: 1.5;
-`;
 
-const NavbarLink = styled(Link)`
-  text-decoration: none;
-  font-size: 1.2rem;
-  color: #333d4b;
-  margin: 1rem;
-  padding: 0.25rem 1rem;
-  align-items: center;
-  flex-basis: 60%;
+  .icon {
+    margin-right: 0.5rem;
+  }
+
+  h1 {
+    color: #333d4b;
+    margin: 1rem;
+    align-items: center;
+    flex-basis: 60%;
+  }
 `;
 
 const Button = styled.button`
   cursor: pointer;
-  font-size: 1.2rem;
-  margin-right: 10rem;
-  padding: 0.25rem 1rem;
+  font-size: 1rem;
   border-style: none;
   color: #333d4b;
   font-weight: bold;
   background: white;
+  margin-left: 1rem;
 
   &:hover {
     scale: 1.1;

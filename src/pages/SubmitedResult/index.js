@@ -58,24 +58,21 @@ function SubmitedResult() {
 export default SubmitedResult;
 
 const Main = styled.div`
+  max-height: 650px;
   background-color: #f9f9f9;
-  height: 80vh;
-  padding-left: 5rem;
-  padding-top: 3rem;
-  margin-top: 4rem;
-  line-height: 1.5;
+  padding-top: 1rem;
   text-align: center;
 `;
 
 const Table = styled.table`
   background-color: #1a1c21;
-  width: 1500px;
+  width: 1200px;
   margin: 0 auto;
   border: 1px solid black;
   border-collapse: collapse;
   color: white;
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
 
   tBody {
     background-color: white;
@@ -85,6 +82,6 @@ const Table = styled.table`
   th,
   td {
     border: 1px solid black;
-    padding: 10px;
+    padding: 8px;
   }
 `;

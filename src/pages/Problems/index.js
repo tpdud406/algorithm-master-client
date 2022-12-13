@@ -17,15 +17,15 @@ export default Problems;
 
 const ContentHeader = styled.header`
   background-color: #f9f9f9;
-  height: 25vh;
+  height: 30vh;
   align-items: center;
   padding-left: 5rem;
   padding-top: 5rem;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   line-height: 1.5;
+  border-top-right-radius: 10px;
 
   p {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 `;

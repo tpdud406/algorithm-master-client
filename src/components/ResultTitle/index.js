@@ -11,6 +11,6 @@ function ResultTitle({ submitedProblems, passed }) {
 
 export default ResultTitle;
 
-const Title = styled.h1`
-  padding-bottom: 3rem;
+const Title = styled.h2`
+  padding-bottom: 1.5rem;
 `;

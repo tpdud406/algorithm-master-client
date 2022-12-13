@@ -31,24 +31,34 @@ function SolvingProblem() {
   }, []);
 
   return (
-    <Wrapper>
-      <ContentTop>
-        <Problem title={title} description={description} />
-        <Editor handleSolution={setSolutionCode} />
-      </ContentTop>
-      <ContentBottom>
-        {<Tests tests={tests} />}
-        <Results solutionCode={solutionCode} />
-      </ContentBottom>
-    </Wrapper>
+    <LayoutContainer>
+      <Wrapper>
+        <ContentTop>
+          <Problem title={title} description={description} />
+          <Editor handleSolution={setSolutionCode} />
+        </ContentTop>
+        <ContentBottom>
+          {<Tests tests={tests} />}
+          <Results solutionCode={solutionCode} />
+        </ContentBottom>
+      </Wrapper>
+    </LayoutContainer>
   );
 }
 
 export default SolvingProblem;
 
+const LayoutContainer = styled.div`
+  max-width: 1400px;
+  max-height: 650px;
+  margin: 0 auto;
+  border: 2px solid #d0d7de;
+  border-radius: 0.5rem;
+`;
+
 const Wrapper = styled.div`
-  font-size: 18px;
-  line-height: 40px;
+  font-size: 15px;
+  line-height: 25px;
   display: flex;
   flex-direction: column;
 `;
