@@ -9,15 +9,15 @@ function SubmitedResult() {
   const [result, setResult] = useState();
   const { submitedProblems } = result || [];
   const sumSubmitedRuntime = [];
-  let passed = 0;
+  let passedCount = 0;
 
   submitedProblems &&
     submitedProblems.forEach((submitedProblem) => {
-      submitedProblem.userAverages && (passed += 1);
+      submitedProblem.isPass && (passedCount += 1);
 
       sumSubmitedRuntime.push(
         [...new Set(submitedProblem.averageRuntimes)].reduce((acc, cur) => {
-          return acc + cur;
+          return Math.round((acc + cur) * 100) / 100;
         }, 0)
       );
     });
@@ -40,7 +40,10 @@ function SubmitedResult() {
   return (
     <Main>
       {submitedProblems && (
-        <ResultTitle submitedProblems={submitedProblems} passed={passed} />
+        <ResultTitle
+          submitedProblems={submitedProblems}
+          passedCount={passedCount}
+        />
       )}
       <Table>
         <THead />
