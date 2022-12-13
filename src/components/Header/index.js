@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
 import User from "../User";
 import Navbar from "./Navbar";
 import { useAuthContext } from "../context/AuthContext";
+import { postAuth } from "../../services/axios";
 
 function Header() {
   const navigate = useNavigate();
@@ -15,19 +15,7 @@ function Header() {
     try {
       const { user } = await login();
       const idToken = await user.getIdToken();
-
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_HOST}/auth/login`,
-        {
-          name: user.displayName,
-          email: user.email,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${idToken}`,
-          },
-        }
-      );
+      const response = await postAuth(idToken, user);
 
       setUserId(response.data.user._id);
       localStorage.setItem("user_id", response.data.user._id);

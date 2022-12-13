@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GrAddCircle } from "react-icons/gr";
+import { getProblemList } from "../../services/axios";
 
 function ProblemList() {
   const user_id = localStorage.getItem("user_id");
@@ -11,10 +11,7 @@ function ProblemList() {
   useEffect(() => {
     const getProblems = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems`
-        );
-
+        const response = await getProblemList(user_id);
         setProblems(response.data);
       } catch (err) {
         console.log(err);

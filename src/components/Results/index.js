@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
+import { postSolution } from "../../services/axios";
 
 function Results({ solutionCode }) {
   const { problem_id } = useParams();
@@ -9,15 +9,11 @@ function Results({ solutionCode }) {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
-          "user_id"
-        )}/problems/${problem_id}`,
-        {
-          solutionCode,
-        }
+      const response = await postSolution(
+        localStorage.getItem("user_id"),
+        problem_id,
+        solutionCode
       );
-
       setResults(response.data);
     } catch (err) {
       console.log(err);

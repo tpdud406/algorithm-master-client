@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
 import Problem from "../../components/Problem";
 import Editor from "../../components/Editor";
 import Tests from "../../components/Tests";
 import Results from "../../components/Results";
+import { getSolvingProblemList } from "../../services/axios";
 
 function SolvingProblem() {
   const { problem_id } = useParams();
@@ -16,10 +16,9 @@ function SolvingProblem() {
   useEffect(() => {
     const getSolvingProblems = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
-            "user_id"
-          )}/problems/${problem_id}`
+        const response = await getSolvingProblemList(
+          localStorage.getItem("user_id"),
+          problem_id
         );
 
         setProblem(response.data);

@@ -17,8 +17,8 @@ function TBody({ submitedProblems, sumSubmitedRuntime }) {
                   ).toFixed(2)
                 )}% 입니다`
               : "-",
-          ]).map((element) => (
-            <td key={element.problemId}>{element}</td>
+          ]).map((element, index) => (
+            <td key={index}>{element}</td>
           ))}
         </tr>
       ))}

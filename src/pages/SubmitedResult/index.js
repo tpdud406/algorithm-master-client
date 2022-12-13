@@ -1,9 +1,9 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ResultTitle from "../../components/ResultTitle";
 import TBody from "../../components/Tbody";
 import THead from "../../components/THead";
+import { getSubmitedProblemList } from "../../services/axios";
 
 function SubmitedResult() {
   const [result, setResult] = useState();
@@ -25,12 +25,9 @@ function SubmitedResult() {
   useEffect(() => {
     const getSubmitResult = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
-            "user_id"
-          )}`
+        const response = await getSubmitedProblemList(
+          localStorage.getItem("user_id")
         );
-
         setResult(response.data);
       } catch (err) {
         console.log(err);
