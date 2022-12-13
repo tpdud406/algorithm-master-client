@@ -16,8 +16,8 @@ export default Content;
 
 const Wrapper = styled.div`
   text-align: center;
-  font-size: 80px;
+  font-size: 60px;
   font-weight: 900;
-  margin-top: 12rem;
+  margin-top: 11rem;
   line-height: 1.5;
 `;

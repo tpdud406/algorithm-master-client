@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GrAddCircle } from "react-icons/gr";
+import { getProblemList } from "../../services/axios";
 
 function ProblemList() {
   const user_id = localStorage.getItem("user_id");
@@ -11,10 +11,7 @@ function ProblemList() {
   useEffect(() => {
     const getProblems = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_HOST}/users/${user_id}/problems`
-        );
-
+        const response = await getProblemList(user_id);
         setProblems(response.data);
       } catch (err) {
         console.log(err);
@@ -54,8 +51,6 @@ const Wrapper = styled.ul`
   display: flex;
   flex-direction: column;
   align-content: center;
-  font-size: 15px;
-  line-height: 50px;
   width: 90%;
   height: 50px;
   margin: 0 auto;
@@ -63,9 +58,8 @@ const Wrapper = styled.ul`
 
   h2 {
     padding-left: 5rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid #8b95a1;
-    font-size: 30px;
   }
 
   a {
@@ -88,20 +82,21 @@ const Problem = styled.li`
   display: flex;
   padding: 12px 16px;
   padding-left: 2rem;
-  font-size: 25px;
-  line-height: 200%;
+  font-size: 18px;
 `;
 
 const ProblemCreate = styled(Link)`
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   background: #f9f9f9;
   border-radius: 20px;
   border: 1px solid #333d4b;
-  padding: 0 2rem;
+  padding: 0.3rem 1rem;
+  text-decoration: none;
 
   .icon {
     margin-right: 0.5rem;
+    color: white;
   }
 `;

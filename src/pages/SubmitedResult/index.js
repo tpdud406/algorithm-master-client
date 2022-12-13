@@ -1,23 +1,23 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ResultTitle from "../../components/ResultTitle";
 import TBody from "../../components/Tbody";
 import THead from "../../components/THead";
+import { getSubmitedProblemList } from "../../services/axios";
 
 function SubmitedResult() {
   const [result, setResult] = useState();
   const { submitedProblems } = result || [];
   const sumSubmitedRuntime = [];
-  let passed = 0;
+  let passedCount = 0;
 
   submitedProblems &&
     submitedProblems.forEach((submitedProblem) => {
-      submitedProblem.userAverages && (passed += 1);
+      submitedProblem.isPass && (passedCount += 1);
 
       sumSubmitedRuntime.push(
         [...new Set(submitedProblem.averageRuntimes)].reduce((acc, cur) => {
-          return acc + cur;
+          return Math.round((acc + cur) * 100) / 100;
         }, 0)
       );
     });
@@ -25,12 +25,9 @@ function SubmitedResult() {
   useEffect(() => {
     const getSubmitResult = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
-            "user_id"
-          )}`
+        const response = await getSubmitedProblemList(
+          localStorage.getItem("user_id")
         );
-
         setResult(response.data);
       } catch (err) {
         console.log(err);
@@ -43,7 +40,10 @@ function SubmitedResult() {
   return (
     <Main>
       {submitedProblems && (
-        <ResultTitle submitedProblems={submitedProblems} passed={passed} />
+        <ResultTitle
+          submitedProblems={submitedProblems}
+          passedCount={passedCount}
+        />
       )}
       <Table>
         <THead />
@@ -61,24 +61,21 @@ function SubmitedResult() {
 export default SubmitedResult;
 
 const Main = styled.div`
+  max-height: 650px;
   background-color: #f9f9f9;
-  height: 80vh;
-  padding-left: 5rem;
-  padding-top: 3rem;
-  margin-top: 4rem;
-  line-height: 1.5;
+  padding-top: 1rem;
   text-align: center;
 `;
 
 const Table = styled.table`
   background-color: #1a1c21;
-  width: 1500px;
+  width: 1200px;
   margin: 0 auto;
   border: 1px solid black;
   border-collapse: collapse;
   color: white;
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
 
   tBody {
     background-color: white;
@@ -88,6 +85,6 @@ const Table = styled.table`
   th,
   td {
     border: 1px solid black;
-    padding: 10px;
+    padding: 8px;
   }
 `;

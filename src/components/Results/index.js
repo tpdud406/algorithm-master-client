@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
+import { postSolution } from "../../services/axios";
 
 function Results({ solutionCode }) {
   const { problem_id } = useParams();
@@ -9,15 +9,11 @@ function Results({ solutionCode }) {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
-          "user_id"
-        )}/problems/${problem_id}`,
-        {
-          solutionCode,
-        }
+      const response = await postSolution(
+        localStorage.getItem("user_id"),
+        problem_id,
+        solutionCode
       );
-
       setResults(response.data);
     } catch (err) {
       console.log(err);
@@ -50,16 +46,18 @@ export default Results;
 
 const Wrapper = styled.div`
   width: 50%;
-  height: 50vh;
+  height: 40vh;
+  border-bottom-right-radius: 10px;
 
   h3 {
     padding: 0.3rem 1rem;
-    border: 1px solid gray;
+    border: 1px solid #d0d7de;
+    background-color: #eaeef2;
   }
 `;
 
 const ErrorMessage = styled.div`
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 800;
   padding: 0.3rem 1rem;
   color: red;
@@ -69,11 +67,13 @@ const Button = styled.button`
   cursor: pointer;
   margin-left: 1rem;
   margin-top: 1rem;
-  width: 100px;
-  height: 50px;
-  font-size: 18px;
+  width: 90px;
+  height: 40px;
+  font-size: 15px;
   border-radius: 0.5rem;
   border-style: none;
+  background-color: #0969da;
+  color: white;
 `;
 
 const Result = styled.div`

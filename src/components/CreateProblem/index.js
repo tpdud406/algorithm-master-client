@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import styled from "styled-components";
 import Modal from "../Modal";
 import ModalPortal from "../Modal/ModalPortal";
+import { postCreateProblem } from "../../services/axios";
 
 function CreateProblem() {
   const navigate = useNavigate();
@@ -39,15 +39,7 @@ function CreateProblem() {
 
   const handleCreateSubmit = async () => {
     try {
-      await axios.post(
-        `${process.env.REACT_APP_SERVER_HOST}/users/${localStorage.getItem(
-          "user_id"
-        )}/problems`,
-        {
-          inputs,
-        }
-      );
-
+      await postCreateProblem(localStorage.getItem("user_id"), inputs);
       navigate(-1);
     } catch (err) {
       console.log(err);
